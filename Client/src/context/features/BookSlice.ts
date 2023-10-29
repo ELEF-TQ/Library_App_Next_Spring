@@ -48,7 +48,7 @@ export const getBooks = createAsyncThunk<Book[], void, { rejectValue: string }>(
 // Async action to add a book to the API
 export const addBook = createAsyncThunk<Book, Book, { rejectValue: string }>('books/addBook', async (bookData, { rejectWithValue }) => {
   try {
-    const response = await axiosClient.post<Book>('/books', bookData);
+    const response = await axiosClient.post<Book>('/', bookData);
     return response.data;
   } catch (error) {
     return rejectWithValue('An error occurred while adding the book.');
@@ -58,7 +58,7 @@ export const addBook = createAsyncThunk<Book, Book, { rejectValue: string }>('bo
 // Async action to remove a book from the API
 export const removeBook = createAsyncThunk<number, number, { rejectValue: string }>('books/removeBook', async (bookId, { rejectWithValue }) => {
   try {
-    await axiosClient.delete(`/books/${bookId}`);
+    await axiosClient.delete(`/${bookId}`);
     return bookId;
   } catch (error) {
     return rejectWithValue('An error occurred while removing the book.');
