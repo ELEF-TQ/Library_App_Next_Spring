@@ -29,7 +29,7 @@ public class Book {
     private String genre;
 
     @Column(name = "publication_year")
-    private int year;
+    private String year;
 
     @Column(name = "book_price")
     private double price;

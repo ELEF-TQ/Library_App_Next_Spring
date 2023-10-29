@@ -20,13 +20,13 @@ public class BookController {
     }
 
     // Create a new book
-    @PostMapping
+    @PostMapping("/")
     public Book createBook(@RequestBody Book book) {
         return bookService.createBook(book);
     }
 
     // Get a list of all books
-    @GetMapping
+    @GetMapping("/")
     public Iterable<Book> getAllBooks() {
         return bookService.getAllBooks();
     }
