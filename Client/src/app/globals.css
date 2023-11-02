@@ -16,16 +16,17 @@
   }
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
+    to bottom,
+    transparent,
+    rgb(var(--background-end-rgb))
+  )
     rgb(var(--background-start-rgb));
-    max-width: 100vw;
-    overflow: hidden;
-
-    scroll-behavior: smooth;
+  overflow: hidden;
 }

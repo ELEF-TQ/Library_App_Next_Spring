@@ -1,6 +1,6 @@
 import { axiosClient } from '@/api/index';
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
-
+import Swal from 'sweetalert2'
 
 interface Book {
   id: number;
@@ -125,6 +125,7 @@ const bookSlice = createSlice({
           state.loading = false;
           state.books.push(action.payload);
           state.error = null;
+          Swal.fire('Success!','Your operation was successful!','success');  
         })
         .addCase(addBook.rejected, (state, action) => {
           state.loading = false;
@@ -137,6 +138,7 @@ const bookSlice = createSlice({
         .addCase(removeBook.fulfilled, (state, action) => {
           state.loading = false;
           state.error = null;
+          Swal.fire('Success!','Your operation was successful!','success');
         })
         .addCase(removeBook.rejected, (state, action) => {
           state.loading = false;
@@ -149,6 +151,7 @@ const bookSlice = createSlice({
         .addCase(updateBook.fulfilled, (state, action) => {
           state.loading = false;
           state.error = null;
+          Swal.fire('Success!','Your operation was successful!','success');
         })
         .addCase(updateBook.rejected, (state, action) => {
           state.loading = false;
