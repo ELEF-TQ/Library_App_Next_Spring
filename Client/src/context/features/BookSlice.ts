@@ -9,6 +9,7 @@ interface Book {
   year:string;
   genre:string;
   price:number;
+  image: string;
 }
 interface BookState {
     books: Book[];

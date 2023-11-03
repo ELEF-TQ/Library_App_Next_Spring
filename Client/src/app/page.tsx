@@ -20,7 +20,7 @@ console.log(books)
   return (
     <div className="flex justify-around align-middle gap-4 p-10 flex-wrap">
       {books.map((item: any) => (
-        <Card key={item.id} id={item.id} title={item.title} imageUrl={item.imageUrl} genre={item.genre} price={item.price} year={item.year}/>
+        <Card key={item.id} id={item.id} title={item.title} image={item.image} genre={item.genre} price={item.price} year={item.year}/>
       ))}
     </div>
   );

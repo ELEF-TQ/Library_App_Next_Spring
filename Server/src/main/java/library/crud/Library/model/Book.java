@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.apache.tomcat.util.codec.binary.Base64;
 
 @Entity
 @Table(name = "Books")
@@ -33,4 +34,12 @@ public class Book {
 
     @Column(name = "book_price")
     private double price;
+
+    @Lob
+    @Column(name = "book_image")
+    private byte[] image;
+    public String getBase64Image() {
+        return Base64.encodeBase64String(image);
+    }
+
 }

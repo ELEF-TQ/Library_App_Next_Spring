@@ -25,6 +25,7 @@ const Page: React.FC<PageProps> = ({ params }) => {
     genre: currentBook?.genre || '',  
     price: currentBook?.price || 0,
     year: currentBook?.year || '',
+    image: currentBook?.image || '',
   });
 
   const handleSubmit = (event: React.FormEvent) => {
