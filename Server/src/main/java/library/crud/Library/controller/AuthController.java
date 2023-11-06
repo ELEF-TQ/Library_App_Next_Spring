@@ -29,12 +29,24 @@ public class AuthController {
 
     @PostMapping("/register")
     public ResponseEntity<String> register(@RequestBody RegisterDto registerDto) {
+        if (registerDto == null ||
+                registerDto.getUsername() == null || registerDto.getUsername().isEmpty() ||
+                registerDto.getEmail() == null || registerDto.getEmail().isEmpty() ||
+                registerDto.getPassword() == null || registerDto.getPassword().isEmpty()) {
+            return new ResponseEntity<>("All fields are required", HttpStatus.BAD_REQUEST);
+        }
+
         if (userRepo.existsByUsername(registerDto.getUsername())) {
             return new ResponseEntity<>("Username is taken", HttpStatus.BAD_REQUEST);
         }
 
+        if (userRepo.existsByEmail(registerDto.getEmail())) {
+            return new ResponseEntity<>("Email is already registered", HttpStatus.BAD_REQUEST);
+        }
+
         User user = new User();
         user.setUsername(registerDto.getUsername());
+        user.setEmail(registerDto.getEmail());
         user.setPassword(passwordEncoder.encode(registerDto.getPassword()));
 
         Role role = roleRepo.findByName("USER").orElseThrow(() -> new RuntimeException("Role 'USER' not found"));
