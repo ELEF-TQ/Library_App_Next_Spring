@@ -27,7 +27,7 @@ public class AuthController {
     private final RoleRepo roleRepo;
     private final PasswordEncoder passwordEncoder;
 
-    @PostMapping("/register")
+    @PostMapping("/signup")
     public ResponseEntity<String> register(@RequestBody RegisterDto registerDto) {
         if (registerDto == null ||
                 registerDto.getUsername() == null || registerDto.getUsername().isEmpty() ||

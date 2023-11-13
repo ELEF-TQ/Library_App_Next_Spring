@@ -23,7 +23,7 @@ export const getBookById = createAsyncThunk<Book, number, { rejectValue: string 
   'books/getBookById',
   async (bookId, { rejectWithValue }) => {
     try {
-      const response = await axiosClient.get<Book>(`/${bookId}`);
+      const response = await axiosClient.get<Book>(`books/${bookId}`);
       return response.data;
     } catch (error) {
       return rejectWithValue('An error occurred while fetching the book by ID.');
@@ -37,7 +37,7 @@ export const getBooks = createAsyncThunk<Book[], void, { rejectValue: string }>(
   'books/getBooks',
   async (_, { rejectWithValue }) => {
     try {
-      const response = await axiosClient.get<Book[]>('/'); 
+      const response = await axiosClient.get<Book[]>('/books'); 
       return response.data;
     } catch (error) {
       return rejectWithValue('An error occurred while fetching books.');
@@ -49,7 +49,7 @@ export const getBooks = createAsyncThunk<Book[], void, { rejectValue: string }>(
 // Async action to add a book to the API
 export const addBook = createAsyncThunk<Book, Book, { rejectValue: string }>('books/addBook', async (bookData, { rejectWithValue }) => {
   try {
-    const response = await axiosClient.post<Book>('/', bookData);
+    const response = await axiosClient.post<Book>('/books', bookData);
     return response.data;
   } catch (error) {
     return rejectWithValue('An error occurred while adding the book.');
@@ -59,7 +59,7 @@ export const addBook = createAsyncThunk<Book, Book, { rejectValue: string }>('bo
 // Async action to remove a book from the API
 export const removeBook = createAsyncThunk<number, number, { rejectValue: string }>('books/removeBook', async (bookId, { rejectWithValue }) => {
   try {
-    await axiosClient.delete(`/${bookId}`);
+    await axiosClient.delete(`/books/${bookId}`);
     return bookId;
   } catch (error) {
     return rejectWithValue('An error occurred while removing the book.');
@@ -69,7 +69,7 @@ export const removeBook = createAsyncThunk<number, number, { rejectValue: string
 // Async action to update a book in the API
 export const updateBook = createAsyncThunk<Book, Book, { rejectValue: string }>('books/updateBook', async (bookData, { rejectWithValue }) => {
   try {
-    const response = await axiosClient.put<Book>(`/${bookData.id}`, bookData); 
+    const response = await axiosClient.put<Book>(`/books/${bookData.id}`, bookData); 
     return response.data;
   } catch (error) {
     return rejectWithValue('An error occurred while updating the book.');
